@@ -10,15 +10,12 @@ public class PlayerController : MonoBehaviour
     public float hInput;
     // Forward & Backward Input
     public float vInput;
-    // projectile
-
     // Update is called once per frame
     void Update()
     {
         //Getting button press values for Horizontal & Vertical Inputs
         hInput = Input.GetAxis("Horizontal");
         vInput = Input.GetAxis("Vertical");
-
         // Makes the vehicle go Left & Right
         transform.Rotate(Vector3.up, turnSpeed * hInput * Time.deltaTime);
         // Makes the vehicle go Forward & Backward
