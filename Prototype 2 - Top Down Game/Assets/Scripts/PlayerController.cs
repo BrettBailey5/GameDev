@@ -36,12 +36,12 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(-xRange, transform.position.y,transform.position.z);
         }
          // Creates wall on Top
-        if(transform.position.x > yRange)
+        if(transform.position.y > yRange)
         {
             transform.position = new Vector3(transform.position.x,yRange,transform.position.z);
         }
         //Creates wall on Bottom
-        if(transform.position.x < -yRange)
+        if(transform.position.y < -yRange)
         {
             transform.position = new Vector3(transform.position.x,-yRange,transform.position.z);
         }
