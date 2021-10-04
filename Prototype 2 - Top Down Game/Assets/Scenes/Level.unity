@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d022e895dd87433fb6e30f8b617d2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1004036195}
 --- !u!61 &1234203674
 BoxCollider2D:
   m_ObjectHideFlags: 0

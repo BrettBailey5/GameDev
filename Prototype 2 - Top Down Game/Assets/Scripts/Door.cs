@@ -6,7 +6,7 @@ public class Door : MonoBehaviour
 {
     public GameManager gameManager;
 
-    void OnTriggerEntder2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player") && gameManager.hasKey == true)
         {
