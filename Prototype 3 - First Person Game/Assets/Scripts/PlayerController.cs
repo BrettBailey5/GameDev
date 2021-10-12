@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+// Declaring variables
     // Movement
     public float moveSpeed; // How fast the player moves
     public float jumpForce; // How high the player jumps
@@ -25,10 +26,10 @@ public class PlayerController : MonoBehaviour
    
     // Update is called once per frame
     void Update()
-    {
+    { 
         Move();
-        CamLook();
-        if(Input.GetButtonDown("Jump"))
+        CamLook();             //Call in you're variables to run them per frame in the game
+        if(Input.GetButtonDown("Jump")) // When using an If statement, you don't need {} if it's just 1 line of code.
             Jump();
     }
     void Move()
@@ -38,20 +39,19 @@ public class PlayerController : MonoBehaviour
         // Applying velocity/movement to the rigidbody
         Vector3 dir = transform.right * x + transform.forward * z;
         // Jump direction
-        dir = rb.velocity.y;
+        dir.y = rb.velocity.y;
         // Apply direction to camera movement
         rb.velocity = dir;
     }
-
     void Jump()
     {
         // Cast ray to ground
         Ray ray = new Ray(transform.position, Vector3.down);
         // Check Ray length to jump
         if(Physics.Raycast(ray, 1.1f))
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); //ForceMode means we're applying all force at once, NOT gradually
     }
-    void CamLook()
+    private void CamLook() //if you don't pick an access motifier, it's private by default.
     {  
         //Get mouse input so we can look around with the mouse
         float y = Input.GetAxis("Mouse X") * lookSensitivity;
