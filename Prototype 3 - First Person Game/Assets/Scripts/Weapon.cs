@@ -41,24 +41,13 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
+        // Adjust shoot time and reduce ammo by one
         lastShootTime = Time.time;
         curAmmo --;
-
+        // Create projectile
         GameObject bullet = Instantiate(bulletProjectile, muzzle.position, muzzle.rotation);
 
         // Set Velocity of bulletProjectile
-        bullet.GetComponent<Rigibody>().velocity = muzzle.forward * bulletSpeed;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
     }
 }
