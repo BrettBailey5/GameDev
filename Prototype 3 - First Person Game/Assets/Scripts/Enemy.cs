@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using System.Linq;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class Enemy : MonoBehaviour
     [Header ("Movement")]
     public float moveSpeed, attackRange, yPathOffset;
 
+    //Lists and arrays contain multiple values for that type.
     private List<Vector3> path;
 
     private Weapon weapon; 
@@ -19,9 +22,12 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        curHP = maxHP;
         //Gather the Components
         weapon = GetComponent<Weapon>();
         target = FindObjectOfType<PlayerController>().gameObject; //This finds the player for us instead of drag&drop.
+
+        InvokeRepeating("UpdatePath", 0.0f, 0.5f);
     }
 
     void UpdatePath()
@@ -43,12 +49,30 @@ public class Enemy : MonoBehaviour
         // Move towards the closest path
         transform.position = Vector3.MoveTowards(transform.position, path[0] + new Vector3(0, yPathOffset, 0), moveSpeed * Time.deltaTime);
 
-        if(transform.position == path[0] + newVector3(0,PathOffset,0))
+        if(transform.position == path[0] + new Vector3(0,yPathOffset,0))
             path.RemoveAt(0);
     }
     // Update is called once per frame
     void Update()
     {
+        // Look at Target
+        Vector3 dir = (target.transform.position - transform.position).normalized;
+        float angle = Mathf.Atan2(dir.x,dir.z) * Mathf.Rad2Deg;
+
+        transform.eulerAngles = Vector3.up * angle;
+
+        // Get distance from enemy to player/target
+        float dist = Vector3.Distance(transform.position, target.transform.position);
+
+        if(dist <= attackRange)
+        {
+            if(weapon.CanShoot())
+            weapon.Shoot();
+        }
+        else
+        {
+            ChaseTarget();
+        }
         
     }
 }
