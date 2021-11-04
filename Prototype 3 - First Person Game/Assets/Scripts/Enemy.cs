@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
         target = FindObjectOfType<PlayerController>().gameObject; //This finds the player for us instead of drag&drop.
 
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
+
     }
 
     void UpdatePath()
@@ -51,6 +52,18 @@ public class Enemy : MonoBehaviour
 
         if(transform.position == path[0] + new Vector3(0,yPathOffset,0))
             path.RemoveAt(0);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+
+        if(curHP <= 0)
+            Die();
+    }
+    void Die()
+    {
+        Destroy(gameObject);
     }
     // Update is called once per frame
     void Update()
