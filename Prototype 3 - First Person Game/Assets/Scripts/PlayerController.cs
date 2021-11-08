@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour // MonoBehavior is a set of Unity commands.  It's a class that we're inheriting from
 {
 // Declaring variables
-    // Movement
+    [Header("Stats")]
+    public int curHP;
+    public int maxHP;
+
+    [Header("Movement")]
     public float moveSpeed; // How fast the player moves
     public float jumpForce; // How high the player jumps
-    // Camera
+
+    [Header("Camera")]
     public float lookSensitivity; // Mouse movement sensitivity
     public float maxLookX; // How low we can look 81
     public float minLookX; // How high we can look 75
     private float rotX; // Current x rotation of the camera
-    //Components
+
+    [Header("Components")]
     private Camera cam; // 
     private Rigidbody rb; // 
     private Weapon weapon;
@@ -24,6 +30,9 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main; // Grabbed object, put in a variable
         rb = GetComponent<Rigidbody>();
         weapon = GetComponent<Weapon>();
+
+        //Disable Cursor
+        Cursor.lockState = CursorLockMode.Locked;
     }
    
     // Update is called once per frame
@@ -72,5 +81,18 @@ public class PlayerController : MonoBehaviour
         // Applying the rotation to Camera
         cam.transform.localRotation = Quaternion.Euler(-rotX, 0, 0);
         transform.eulerAngles += Vector3.up * y;
+    }
+    public void TakeDamage(int damage)
+    {
+        // These 2 mean the same thing.
+        curHP -= damage; // Shorthand Notation
+        curHP = curHP - damage; // Longhand Notation
+
+        if(curHP <= 0)
+            Die();
+    }
+    void Die()
+    {
+        print("You Suck, Try again");
     }
 }
