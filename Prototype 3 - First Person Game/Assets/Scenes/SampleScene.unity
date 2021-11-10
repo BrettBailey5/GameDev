@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 574297938}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -822,7 +822,7 @@ Transform:
   m_Children:
   - {fileID: 1995784675}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &574297935
 MonoBehaviour:
@@ -1599,7 +1599,7 @@ GameObject:
   - component: {fileID: 1235109770}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1616,6 +1616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c5d83c071ae4142b638105532ccd4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curHP: 0
+  maxHP: 0
   moveSpeed: 5
   jumpForce: 3
   lookSensitivity: 4
@@ -1967,7 +1969,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1430614304
 GameObject:
