@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour // MonoBehavior is a set of Unity 
     [Header("Movement")]
     public float moveSpeed; // How fast the player moves
     public float jumpForce; // How high the player jumps
+    public float sprint;
 
     [Header("Camera")]
     public float lookSensitivity; // Mouse movement sensitivity
@@ -48,6 +49,16 @@ public class PlayerController : MonoBehaviour // MonoBehavior is a set of Unity 
         {
             if(weapon.CanShoot())
                 weapon.Shoot();
+        }
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpeed = moveSpeed + sprint;
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftShift))
+            moveSpeed = moveSpeed - sprint;
+        else
+        {
+             moveSpeed = moveSpeed;
         }
     }
     void Move()

@@ -1620,6 +1620,7 @@ MonoBehaviour:
   maxHP: 0
   moveSpeed: 5
   jumpForce: 3
+  sprint: 5
   lookSensitivity: 4
   maxLookX: 90
   minLookX: -75

@@ -13,6 +13,17 @@ public class Bullet : MonoBehaviour
     {
         
     }
+    void OnTriggerEnter(Collider other)
+    {
+        //Did we hit the target aka player
+        if(other.CompareTag("Player"))
+            other.GetComponent<PlayerController>().TakeDamage(damage);
+            else
+                if(other.CompareTag("Enemy"))
+                    other.GetComponent<Enemy>().TakeDamage(damage);
+            //Disable Bullet
+            gameObject.SetActive(false);
+    }
     void OnEnable()
     {
         shootTime = Time.time;
