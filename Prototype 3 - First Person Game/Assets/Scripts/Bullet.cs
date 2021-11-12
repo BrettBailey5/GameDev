@@ -15,19 +15,20 @@ public class Bullet : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        //Did we hit the target aka player
+        //Did we hit the player or the enemy
         if(other.CompareTag("Player"))
             other.GetComponent<PlayerController>().TakeDamage(damage);
-            else
-                if(other.CompareTag("Enemy"))
-                    other.GetComponent<Enemy>().TakeDamage(damage);
-            //Disable Bullet
-            gameObject.SetActive(false);
+        else if(other.CompareTag("Enemy"))
+            other.GetComponent<Enemy>().TakeDamage(damage);
+
+        //Disable Bullet
+        gameObject.SetActive(false);
     }
     void OnEnable()
     {
         shootTime = Time.time;
     }
+
     // Update is called once per frame
     void Update()
     {
