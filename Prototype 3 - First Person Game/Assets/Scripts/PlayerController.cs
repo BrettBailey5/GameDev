@@ -106,4 +106,13 @@ public class PlayerController : MonoBehaviour // MonoBehavior is a set of Unity 
     {
         print("You Suck, Try again");
     }
+
+    public void GiveHealth(int amountToGive)
+    {
+        curHP = Mathf.Clamp(curHP + amountToGive, 0, maxHP);   
+    }
+    public void GiveAmmo(int amountToGive)
+    {
+        weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0, weapon.maxAmmo);
+    }
 }
