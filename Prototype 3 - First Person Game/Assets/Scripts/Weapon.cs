@@ -7,13 +7,14 @@ public class Weapon : MonoBehaviour
     public ObjectPool bulletPool;
     
     public Transform muzzle;
-
+    [Header ("Ammunition")]
     public int curAmmo;
     public int maxAmmo;
+    public int mag;
     public bool infiniteAmmo;
-
+    [Header ("Bullet Speed")]
     public float bulletSpeed;
-
+    [Header ("Other")]
     public float shootRate;
     public float lastShootTime;
     private bool isPlayer;
