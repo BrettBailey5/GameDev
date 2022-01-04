@@ -63,7 +63,8 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        Destroy(gameObject);
+        GameManager.instance.AddScore(scoreToGive);
+        Destroy(gameObject,1);
     }
     // Update is called once per frame
     void Update()

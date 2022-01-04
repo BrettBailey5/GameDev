@@ -10,7 +10,6 @@ public class Weapon : MonoBehaviour
     [Header ("Ammunition")]
     public int curAmmo;
     public int maxAmmo;
-    public int mag;
     public bool infiniteAmmo;
     [Header ("Bullet Speed")]
     public float bulletSpeed;
@@ -28,6 +27,8 @@ public class Weapon : MonoBehaviour
             isPlayer = true;
         }
     }
+
+
     // Can we shoot a bullet
     public bool CanShoot() //Using this as a checking device and returning a value (you can't return a value on void) 
     {
@@ -53,5 +54,8 @@ public class Weapon : MonoBehaviour
 
         // Set Velocity of bulletProjectile
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
+        
+        if(isPlayer)
+            GameUI.instance.UpdateAmmoText(curAmmo, maxAmmo);
     }
 }
