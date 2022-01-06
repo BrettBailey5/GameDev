@@ -20,6 +20,8 @@ public class Pickup : MonoBehaviour
     private Vector3 startPos;
     private bool bobbingUp;
 
+    public AudioClip pickupSfx;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,8 @@ public class Pickup : MonoBehaviour
                     player.GiveAmmo(value);
                     break;
             }
+            // Play pickup audio clip
+            other.GetComponent<AudioSource>().PlayOneShot(pickupSfx);
 
             Destroy(gameObject);
         }

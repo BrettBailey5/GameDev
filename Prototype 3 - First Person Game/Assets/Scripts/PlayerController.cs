@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour // MonoBehavior is a set of Unity 
         if(curHP <= 0)
             Die();
 
-        GameUI.instance.UpdateHealthbar(curHP, maxHP);
+        GameUI.instance.UpdateHealthBar(curHP, maxHP);
     }
     void Die()
     {

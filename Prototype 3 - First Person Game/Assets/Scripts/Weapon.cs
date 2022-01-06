@@ -17,7 +17,9 @@ public class Weapon : MonoBehaviour
     public float shootRate;
     public float lastShootTime;
     private bool isPlayer;
-
+    
+    public AudioClip shootSfx;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -25,6 +27,8 @@ public class Weapon : MonoBehaviour
         if(GetComponent<PlayerController>())
         {
             isPlayer = true;
+            // Initialize AudioSource variable
+            audioSource = GetComponent<AudioSource>();
         }
     }
 
@@ -44,6 +48,7 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
+        audioSource.PlayOneShot(shootSfx);
         // Adjust shoot time and reduce ammo by one
         lastShootTime = Time.time;
         curAmmo --;
