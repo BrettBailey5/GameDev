@@ -26,10 +26,10 @@ public class Weapon : MonoBehaviour
         // Check to see if we're attached to the player
         if(GetComponent<PlayerController>())
         {
-            isPlayer = true;
-            // Initialize AudioSource variable
-            audioSource = GetComponent<AudioSource>();
+            isPlayer = true; 
         }
+         // Initialize AudioSource variable
+        audioSource = GetComponent<AudioSource>();        
     }
 
 
