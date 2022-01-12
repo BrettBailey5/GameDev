@@ -13,7 +13,7 @@ public class Pickup : MonoBehaviour
     public PickupType type;
     public int value;
 
-    [Header ("Bobbing Animation")]
+    [Header ("Bobbing Anim")]
     public float rotationSpeed;
     public float bobSpeed;
     public float bobHeight;
